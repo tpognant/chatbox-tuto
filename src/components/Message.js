@@ -1,9 +1,12 @@
-import * as React from 'react';
+import React from 'react';
 
-export const Message = () => {
+const Message = ({pseudo, message}) => {
+
     return (
         <p className='user-message'>
-            Mon message
+            {pseudo}: {message}
         </p>
-    );
-};
+    )
+}
+
+export default Message

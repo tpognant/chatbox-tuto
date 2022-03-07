@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import './App.css'
 import Formulaire from "./components/Formulaire";
-import {Message} from "./components/Message";
+import Message from "./components/Message";
 
 class App extends Component {
 
@@ -17,17 +17,27 @@ class App extends Component {
     }
 
     render() {
+
+        const messages = Object.keys(this.state.messages)
+            .map(value => (
+                <Message
+                    key={value}
+                    pseudo={this.state.messages[value].pseudo}
+                    message={this.state.messages[value].message}
+                />
+            ))
+
         return (
             <div className='box'>
                 <div>
                     <div className='messages'>
-                        <Message />
-                        <Message />
-                        <Message />
-                        <Message />
+                        {messages}
                     </div>
                 </div>
-                <Formulaire pseudo={this.state.pseudo} addMessage={this.addMessage} />
+                <Formulaire
+                    length={140}
+                    pseudo={this.state.pseudo}
+                    addMessage={this.addMessage} />
             </div>
         )
     }
